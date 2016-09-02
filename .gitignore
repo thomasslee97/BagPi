@@ -29,10 +29,10 @@ build/Release
 # Dependency directories
 node_modules
 jspm_packages
-src/EvokeConnectPortal/node_modules
-src/EvokeConnectPortal/jspm_packages
-src/EvokeConnectPortal/bin
-src/EvokeConnectPortal/obj
+src/BagPi/node_modules
+src/BagPi/jspm_packages
+src/BagPi/bin
+src/BagPi/obj
 
 # Optional npm cache directory
 .npm
@@ -41,5 +41,5 @@ src/EvokeConnectPortal/obj
 .node_repl_history
 
 # Compiled js
-src/EvokeConnectPortal/wwwroot/appScripts
-src/EvokeConnectPortal/wwwroot/libs
+src/BagPi/wwwroot/appScripts
+src/BagPi/wwwroot/libs
