@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{E032B205-9FE9-4CF8-A4A9-D12DC8CB55E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{DFE13005-1FF9-4F05-8695-96DFB391949F}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+	EndProjectSection
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "BagPi", "src\BagPi\BagPi.xproj", "{94312DB8-3BD8-43ED-965A-0B60D5005CE6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{94312DB8-3BD8-43ED-965A-0B60D5005CE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94312DB8-3BD8-43ED-965A-0B60D5005CE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94312DB8-3BD8-43ED-965A-0B60D5005CE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94312DB8-3BD8-43ED-965A-0B60D5005CE6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{94312DB8-3BD8-43ED-965A-0B60D5005CE6} = {E032B205-9FE9-4CF8-A4A9-D12DC8CB55E8}
+	EndGlobalSection
+EndGlobal
