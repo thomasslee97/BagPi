@@ -30,18 +30,18 @@ gulp.task("scriptsNStyles", () => {
         .pipe(gulp.dest("./wwwroot/libs"));    
 });
 
-var tsProject = ts.createProject('scripts/tsconfig.json');
+var tsProject = ts.createProject('app/tsconfig.json');
 gulp.task('ts', function (done) {
     //var tsResult = tsProject.src()
     var tsResult = gulp.src([
-            "scripts/**/*.ts"
+            "app/**/*.ts"
     ])
         .pipe(ts(tsProject), undefined, ts.reporter.fullReporter());
-    return tsResult.js.pipe(gulp.dest('./wwwroot/appScripts'));
+    return tsResult.js.pipe(gulp.dest('./wwwroot/app'));
 });
 
 gulp.task('less', function () {
-    return gulp.src('scripts/**/*.less')
+    return gulp.src('app/**/*.less')
     .pipe(plumber())
     .pipe(less({
         paths: [path.join(__dirname, 'less', 'includes')]
@@ -52,7 +52,7 @@ gulp.task('less', function () {
 gulp.task('watch', ['watch.ts']);
 
 gulp.task('watch.ts', ['ts', 'less'], function () {
-    return gulp.watch(['scripts/**/*.ts', 'scripts/**/*.less'], ['ts', 'less']);
+    return gulp.watch(['app/**/*.ts', 'app/**/*.less'], ['ts', 'less']);
 });
 
 gulp.task('default', ['scriptsNStyles', 'watch']);
