@@ -1,6 +1,6 @@
 ﻿import { Component } from '@angular/core';
 @Component({
-    selector: 'my-app',
+    selector: 'bag-pi',
     templateUrl: 'views/app.html'
 })
 export class AppComponent { }

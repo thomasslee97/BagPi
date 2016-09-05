@@ -1,7 +1,17 @@
 ﻿import { Routes, RouterModule } from '@angular/router';
 
-const appRoutes: Routes = [
+import { BagPiMobileComponent } from '../app/components/mobile/mobile.component';
+import { BagPiPiComponent } from '../app/components/pi/pi.component';
 
+const appRoutes: Routes = [
+    {
+        path: '',
+        component: BagPiMobileComponent
+    },
+    {
+        path: 'pi',
+        component: BagPiPiComponent
+    }
 ];
 
 export const appRoutingProviders: any[] = [

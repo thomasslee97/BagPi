@@ -26,7 +26,9 @@ gulp.task("scriptsNStyles", () => {
             'bootstrap/dist/js/bootstrap.*js',
             'bootstrap/dist/css/bootstrap.*css',
             'bootstrap/dist/css/bootstrap-theme.*css',
-            'bootstrap/dist/fonts/*'
+            'bootstrap/dist/fonts/*',
+            'font-awesome/css/*',
+            'font-awesome/fonts/*'
     ], {
         cwd: "node_modules/**"
     })

@@ -1,0 +1,18 @@
+.container-fluid {
+  margin-right: auto;
+  margin-left: auto;
+  min-width: 480px;
+  max-width: 480px;
+  width: 480px;
+  min-height: 320px;
+  max-height: 320px;
+  height: 320px;
+}
+h1 {
+  color: #1DA1F2;
+}
+.alignContent {
+  min-height: 240px;
+  max-height: 240px;
+  height: 240px;
+}
