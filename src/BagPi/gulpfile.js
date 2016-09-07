@@ -28,7 +28,9 @@ gulp.task("scriptsNStyles", () => {
             'bootstrap/dist/css/bootstrap-theme.*css',
             'bootstrap/dist/fonts/*',
             'font-awesome/css/*',
-            'font-awesome/fonts/*'
+            'font-awesome/fonts/*',
+            'ng2-qrcode/dist/ng2-qrcode.*js',
+            'qrcodejs2/qrcode.min.js'
     ], {
         cwd: "node_modules/**"
     })
