@@ -43,3 +43,4 @@ src/BagPi/obj
 # Compiled js
 src/BagPi/wwwroot/app
 src/BagPi/wwwroot/libs
+src/BagPi/wwwroot/appScripts

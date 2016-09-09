@@ -7,7 +7,8 @@ import { routing, appRoutingProviders } from './app.routing';
 
 import { AppComponent }  from './app.component';
 
-import { BagPiMobileComponent } from '../app/components/mobile/mobile.component';
+import { BagPiMobileComponent } from './components/index';
+import { BagPiPiComponent } from './components/index';
 
 @NgModule({
     imports: [
@@ -17,7 +18,8 @@ import { BagPiMobileComponent } from '../app/components/mobile/mobile.component'
     ],
     declarations: [
         AppComponent,
-        BagPiMobileComponent
+        BagPiMobileComponent,
+        BagPiPiComponent
     ],
     providers: [
         { provide: LocationStrategy, useClass: HashLocationStrategy },
