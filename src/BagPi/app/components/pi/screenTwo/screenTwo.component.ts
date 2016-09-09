@@ -3,8 +3,8 @@ import { QRCodeComponent } from 'ng2-qrcode';
 
 @Component({
     selector: 'bag-pi-screen-two-component',
-    templateUrl: 'views/components/screenTwo/screenTwo.component.html',
-    styleUrls: ['views/components/screenTwo/screenTwo.component.css'],
+    templateUrl: 'views/components/pi/screenTwo/screenTwo.component.html',
+    styleUrls: ['views/components/pi/screenTwo/screenTwo.component.css'],
     directives: [QRCodeComponent],
     host: {
         '[@routeAnimation]': 'true',

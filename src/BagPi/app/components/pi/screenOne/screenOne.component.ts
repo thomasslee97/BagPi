@@ -5,8 +5,8 @@ import { QRCodeComponent } from 'ng2-qrcode';
 
 @Component({
     selector: 'bag-pi-screen-one-component',
-    templateUrl: 'views/components/screenOne/screenOne.component.html',
-    styleUrls: ['views/components/screenOne/screenOne.component.css'],
+    templateUrl: 'views/components/pi/screenOne/screenOne.component.html',
+    styleUrls: ['views/components/pi/screenOne/screenOne.component.css'],
     directives: [QRCodeComponent, ROUTER_DIRECTIVES],
     host: {
         '[@routeAnimation]': 'true',
