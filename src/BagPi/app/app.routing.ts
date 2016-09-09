@@ -1,7 +1,9 @@
 ﻿import { Routes, RouterModule } from '@angular/router';
 
-import { BagPiMobileComponent } from '../app/components/mobile/mobile.component';
-import { BagPiPiComponent } from '../app/components/pi/pi.component';
+import { BagPiMobileComponent } from './components/index';
+import { BagPiPiComponent } from './components/index';
+import { BagPiScreenOneComponent } from './components/index';
+import { BagPiScreenTwoComponent } from './components/index';
 
 const appRoutes: Routes = [
     {
@@ -10,7 +12,21 @@ const appRoutes: Routes = [
     },
     {
         path: 'pi',
-        component: BagPiPiComponent
+        component: BagPiPiComponent,
+        children: [
+            {
+                path: '',
+                redirectTo: '1'
+            },
+            {
+                path: '1',
+                component: BagPiScreenOneComponent
+            },
+            {
+                path: '2',
+                component: BagPiScreenTwoComponent
+            }
+        ]
     }
 ];
 

@@ -1,7 +1,7 @@
 ﻿import { Component } from '@angular/core';
 import { QRCodeComponent } from 'ng2-qrcode';
 
-import { BagPiMobileComponent } from '../index';
+import { BagPiSlideshowService } from '../../services/index';
 
 @Component({
     selector: 'bag-pi-pi-component',
@@ -9,4 +9,8 @@ import { BagPiMobileComponent } from '../index';
     styleUrls: ['views/components/pi/pi.component.css'],
     directives: [QRCodeComponent]
 })
-export class BagPiPiComponent { }
+export class BagPiPiComponent {
+    constructor(private slideShowService: BagPiSlideshowService) {
+
+    }
+}
