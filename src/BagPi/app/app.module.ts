@@ -9,6 +9,7 @@ import { routing, appRoutingProviders } from './app.routing';
 
 import { AppComponent }  from './app.component';
 
+import { BagPiScreenService } from './services/index';
 import { BagPiSlideshowService } from './services/index';
 
 import { BagPiMobileComponent } from './components/index';
@@ -32,6 +33,7 @@ import { BagPiScreenTwoComponent } from './components/index';
     providers: [
         { provide: LocationStrategy, useClass: HashLocationStrategy },
         appRoutingProviders,
+        BagPiScreenService,
         BagPiSlideshowService
     ],
     bootstrap: [AppComponent]

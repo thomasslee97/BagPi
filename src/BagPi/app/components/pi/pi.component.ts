@@ -1,6 +1,7 @@
 ﻿import { Component } from '@angular/core';
 import { QRCodeComponent } from 'ng2-qrcode';
 
+import { BagPiScreenService } from '../../services/index';
 import { BagPiSlideshowService } from '../../services/index';
 
 @Component({
@@ -10,7 +11,11 @@ import { BagPiSlideshowService } from '../../services/index';
     directives: [QRCodeComponent]
 })
 export class BagPiPiComponent {
-    constructor(private slideShowService: BagPiSlideshowService) {
+    constructor(
+        private screenService: BagPiScreenService,
+        private slideShowService: BagPiSlideshowService
+    )
+    {
 
     }
 }

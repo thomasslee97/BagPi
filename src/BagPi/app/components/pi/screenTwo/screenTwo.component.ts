@@ -1,11 +1,15 @@
 ﻿import { Component, trigger, transition, animate, style, state } from '@angular/core';
+import { ROUTER_DIRECTIVES } from '@angular/router';
+
 import { QRCodeComponent } from 'ng2-qrcode';
+
+import { BagPiScreenService } from '../../../services/index';
 
 @Component({
     selector: 'bag-pi-screen-two-component',
     templateUrl: 'views/components/pi/screenTwo/screenTwo.component.html',
     styleUrls: ['views/components/pi/screenTwo/screenTwo.component.css'],
-    directives: [QRCodeComponent],
+    directives: [QRCodeComponent, ROUTER_DIRECTIVES],
     host: {
         '[@routeAnimation]': 'true',
         '[style.display]': "'block'",
@@ -22,4 +26,10 @@ import { QRCodeComponent } from 'ng2-qrcode';
         ])
     ]
 })
-export class BagPiScreenTwoComponent { }
+export class BagPiScreenTwoComponent {
+    constructor(
+        private screenService: BagPiScreenService
+    ) {
+        
+    }
+}

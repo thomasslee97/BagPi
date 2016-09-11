@@ -1,22 +1,22 @@
-﻿<div class="container page">
+﻿<div class="container" [style.color]="screenService.screens[screenService.currentScreenOdd].styles[0].color" [style.background]="screenService.screens[screenService.currentScreenOdd].styles[0].background">
     <div class="row">
         <div class="col-xs-12 text-center">
-            <h1><i class="fa fa-twitter"></i> Twitter</h1>
+            <h1><span [innerHTML]="screenService.screens[screenService.currentScreenOdd].icon"></span> {{screenService.screens[screenService.currentScreenOdd].title}}</h1>
         </div>
     </div>
     <div class="row">
         <div class="col-xs-12 alignContent">
             <div class="row text-center">
-                <div class="col-xs-12">
-                    <h1>Tom Lee</h1>
+                <div class="col-xs-12" *ngIf="screenService.screens[screenService.currentScreenOdd].username">
+                    <h1>{{screenService.screens[screenService.currentScreenOdd].username}}</h1>
                 </div>
                 <div class="col-xs-12">
                     <div style="height: 100px; width: 100px; margin-left: auto; margin-right: auto;">
-                        <qrcode [qrdata]="'https://twitter.com/thomasslee97'" [size]="100" [level]="'M'"></qrcode>
+                        <qrcode [qrdata]="screenService.screens[screenService.currentScreenOdd].url" [size]="100" [level]="'M'"></qrcode>
                     </div>
                 </div>
                 <div class="col-xs-12">
-                    <h1>@thomasslee97</h1>
+                    <h1>{{screenService.screens[screenService.currentScreenOdd].handle}}</h1>
                 </div>
             </div>
         </div>

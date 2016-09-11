@@ -3,6 +3,8 @@ import { ROUTER_DIRECTIVES } from '@angular/router';
 
 import { QRCodeComponent } from 'ng2-qrcode';
 
+import { BagPiScreenService } from '../../../services/index';
+
 @Component({
     selector: 'bag-pi-screen-one-component',
     templateUrl: 'views/components/pi/screenOne/screenOne.component.html',
@@ -24,4 +26,11 @@ import { QRCodeComponent } from 'ng2-qrcode';
         ])
     ]
 })
-export class BagPiScreenOneComponent { }
+export class BagPiScreenOneComponent {
+    constructor(
+        private screenService: BagPiScreenService
+    )
+    {
+
+    }
+}
