@@ -41,4 +41,21 @@ export class BagPiScreenService {
             }]
         }
     ];
+
+    public scrollToNext(currentScreen) {
+        // CurrentScreen = 0 => Even displayed
+        // CurrentScreen = 1 => Odd displayed
+
+        if (currentScreen == 0) {
+            this.currentScreenOdd = this.currentScreenEven + 1;
+            if (this.currentScreenOdd > this.screens.length - 1) {
+                this.currentScreenOdd = 0;
+            }
+        } else {
+            this.currentScreenEven = this.currentScreenOdd + 1;
+            if (this.currentScreenEven > this.screens.length - 1) {
+                this.currentScreenEven = 0;
+            }
+        }
+    }
 }
