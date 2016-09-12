@@ -1,5 +1,6 @@
 ﻿[
   {
+    "type":  "Social",
     "title": "Twitter",
     "icon": "<i class=\"fa fa-twitter\"></i>",
     "username": "Tom Lee",
@@ -13,6 +14,7 @@
     ]
   },
   {
+    "type": "Social",
     "title": "Facebook",
     "icon": "<i class=\"fa fa-facebook\"></i>",
     "username": "Tom Lee",
@@ -26,6 +28,7 @@
     ]
   },
   {
+    "type": "Social",
     "title": "Blog",
     "icon": "<img src=\"/media/Logo_Dark.png\" width=\"36\" height=\"36\" />",
     "username": "./T",

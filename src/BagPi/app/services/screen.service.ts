@@ -8,7 +8,9 @@ export class BagPiScreenService {
     public currentScreenEven = 0;
     public currentScreenOdd = 2;
 
-    public bLoaded = false;
+    public bLoaded:boolean = false;
+    public bEditing: boolean = false;
+    public bCreating: boolean = false;
 
     public constructor(private http: Http) {
         this.getScreens().subscribe((data) => this.screens = this.formatData(data));

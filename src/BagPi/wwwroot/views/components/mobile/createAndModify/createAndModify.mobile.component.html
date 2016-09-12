@@ -1,1 +1,39 @@
-﻿
+﻿<div *ngIf="screenService.bEditing" class="col-xs-12">
+    Edit
+</div>
+<div *ngIf="screenService.bCreating" class="col-xs-12">
+    <div class="container">
+        <form>
+            <div class="form-group row">
+                <label for="newScreenTypeSelect" class="col-xs-2 col-form-label">Screen Type</label>
+                <div class="col-xs-10">
+                    <select class="form-control" id="newScreenTypeSelect" required>
+                        <option>Social</option>
+                        <option style="background-color: #ca4242; color: white;">Custom HTML</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="newScreenIcon" class="col-xs-2 col-form-label">Icon</label>
+                <div class="col-xs-10">
+                    <select class="form-control" id="newScreenIcon" required>
+                        <option>&#xf09a; Facebook</option>
+                        <option>&#xf099; Twitter</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="newScreenTitleInput" class="col-xs-2 col-form-label">Screen Name</label>
+                <div class="col-xs-10">
+                    <input type="text" class="form-control" id="newScreenTitleInput" required />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="newScreenTextColor" class="col-xs-2 col-form-label">Color</label>
+                <div class="col-xs-10">
+                    <input class="form-control" type="color" value="#563d7c" id="newScreenTextColor" required>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
