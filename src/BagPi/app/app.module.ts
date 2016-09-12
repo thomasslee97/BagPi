@@ -2,6 +2,7 @@
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { HttpModule, JsonpModule } from '@angular/http';
 
 import { RouterConfig, ROUTER_DIRECTIVES } from '@angular/router';
 
@@ -21,7 +22,8 @@ import { BagPiScreenTwoComponent } from './components/index';
     imports: [
         BrowserModule,
         FormsModule,
-        routing
+        routing,
+        HttpModule
     ],
     declarations: [
         AppComponent,

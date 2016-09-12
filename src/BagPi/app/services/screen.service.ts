@@ -1,12 +1,32 @@
 ﻿import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { Http, Response } from '@angular/http';
+import { Observable }     from 'rxjs/Observable';
 
 @Injectable()
 export class BagPiScreenService {
     public currentScreenEven = 0;
     public currentScreenOdd = 2;
 
-    public screens = [
+    public bLoaded = false;
+
+    public constructor(private http: Http) {
+        this.getScreens().subscribe((data) => this.screens = this.formatData(data));
+    }
+
+    formatData(data) {
+        this.bLoaded = true;
+        console.log(data);
+        return data;
+    }
+
+    getScreens() {
+        return this.http.request('/data/screens.json').map(result => result.json());
+    }
+
+    public screens = [];
+
+    /*public screens = [
         {
             title: 'Twitter',
             icon: '<i class="fa fa-twitter"></i>',
@@ -40,7 +60,7 @@ export class BagPiScreenService {
                 background: '#FFFFFF'
             }]
         }
-    ];
+    ];*/
 
     public scrollToNext(currentScreen) {
         // CurrentScreen = 0 => Even displayed

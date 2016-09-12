@@ -1,4 +1,4 @@
-﻿<div class="container" [style.color]="screenService.screens[screenService.currentScreenOdd].styles[0].color" [style.background]="screenService.screens[screenService.currentScreenOdd].styles[0].background">
+﻿<div *ngIf="screenService.screens && screenService.bLoaded && screenService.screens.length > 0" class="container" [style.color]="screenService.screens[screenService.currentScreenOdd].styles[0].color" [style.background]="screenService.screens[screenService.currentScreenOdd].styles[0].background">
     <div class="row">
         <div class="col-xs-12 text-center">
             <h1><span [innerHTML]="screenService.screens[screenService.currentScreenOdd].icon"></span> {{screenService.screens[screenService.currentScreenOdd].title}}</h1>

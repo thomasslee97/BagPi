@@ -13,21 +13,23 @@ export class BagPiSlideshowService {
     }
 
     alternate() {
-        this.currentScreen++;
+        if (this.screenService.bLoaded) {
+            this.currentScreen++;
 
-        if (this.currentScreen == 2) {
-            this.currentScreen = 0;
-        }
+            if (this.currentScreen == 2) {
+                this.currentScreen = 0;
+            }
 
-        this.screenService.scrollToNext(this.currentScreen);
+            this.screenService.scrollToNext(this.currentScreen);
 
-        switch (this.currentScreen) {
-            case 0:
-                this.router.navigate(['/pi/1']);
-                break;
-            case 1:
-                this.router.navigate(['/pi/2']);
-                break;
+            switch (this.currentScreen) {
+                case 0:
+                    this.router.navigate(['/pi/1']);
+                    break;
+                case 1:
+                    this.router.navigate(['/pi/2']);
+                    break;
+            }
         }
     }
 }
