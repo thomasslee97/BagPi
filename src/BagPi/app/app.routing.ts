@@ -1,10 +1,11 @@
 ﻿import { Routes, RouterModule } from '@angular/router';
 
 import { BagPiMobileComponent } from './components/index';
+import { BagPiMenuMobileComponent } from './components/index';
+import { BagPiCreateAndModifyMobileComponent } from './components/index';
 import { BagPiPiComponent } from './components/index';
 import { BagPiScreenOneComponent } from './components/index';
 import { BagPiScreenTwoComponent } from './components/index';
-import { BagPiMenuMobileComponent } from './components/index';
 
 const appRoutes: Routes = [
     {
@@ -18,6 +19,14 @@ const appRoutes: Routes = [
             {
                 path: 'menu',
                 component: BagPiMenuMobileComponent
+            },
+            {
+                path: 'create',
+                component: BagPiCreateAndModifyMobileComponent
+            },
+            {
+                path: 'edit',
+                component: BagPiCreateAndModifyMobileComponent
             }
         ]
     },

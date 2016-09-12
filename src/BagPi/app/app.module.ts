@@ -15,6 +15,7 @@ import { BagPiSlideshowService } from './services/index';
 
 import { BagPiMobileComponent } from './components/index';
 import { BagPiMenuMobileComponent } from './components/index';
+import { BagPiCreateAndModifyMobileComponent } from './components/index';
 import { BagPiPiComponent } from './components/index';
 import { BagPiScreenOneComponent } from './components/index';
 import { BagPiScreenTwoComponent } from './components/index';
@@ -29,6 +30,8 @@ import { BagPiScreenTwoComponent } from './components/index';
     declarations: [
         AppComponent,
         BagPiMobileComponent,
+        BagPiMenuMobileComponent,
+        BagPiCreateAndModifyMobileComponent,
         BagPiPiComponent,
         BagPiScreenOneComponent,
         BagPiScreenTwoComponent
