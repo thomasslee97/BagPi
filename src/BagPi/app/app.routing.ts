@@ -4,11 +4,22 @@ import { BagPiMobileComponent } from './components/index';
 import { BagPiPiComponent } from './components/index';
 import { BagPiScreenOneComponent } from './components/index';
 import { BagPiScreenTwoComponent } from './components/index';
+import { BagPiMenuMobileComponent } from './components/index';
 
 const appRoutes: Routes = [
     {
         path: '',
-        component: BagPiMobileComponent
+        component: BagPiMobileComponent,
+        children: [
+            {
+                path: '',
+                redirectTo: 'menu'
+            },
+            {
+                path: 'menu',
+                component: BagPiMenuMobileComponent
+            }
+        ]
     },
     {
         path: 'pi',
