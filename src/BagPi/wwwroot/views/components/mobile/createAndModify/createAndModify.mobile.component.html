@@ -2,12 +2,6 @@
     Edit
 </div>
 
-<style>
-    .fa-select {
-        font-family: sans-serif, 'FontAwesome';
-    }
-</style>
-
 <div *ngIf="screenService.bCreating" class="col-xs-12">
     <div class="container">
         <form>
@@ -23,23 +17,8 @@
             <div class="form-group row">
                 <label for="newScreenIcon" class="col-xs-2 col-form-label">Icon</label>
                 <div class="col-xs-10">
-                    <select class="form-control fa-select" id="newScreenIcon" required>
-                        <option>&#xf09a; Facebook</option>
-                        <option>&#xf099; Twitter</option>
-                        <option>&#xf1be; Soundcloud</option>
-                        <option>&#xf2b3; Google+</option>
-                        <option>&#xf167; YouTube</option>
-                        <option>&#xf16d; Instagram</option>
-                        <option>&#xf09b; GitHub</option>
-                        <option>&#xf198; Slack</option>
-                        <option>&#xf1a1; Reddit</option>
-                        <option>&#xf19a; Wordpress</option>
-                        <option>&#xf171; Bitbucket</option>
-                        <option>&#xf0d2; Pinterest</option>
-                        <option>&#xf17e; Skype</option>
-                        <option>&#xf1b6; Steam</option>
-                        <option>&#xf1bd; Deviantart</option>
-                        <option>&#xf0e1; LinkedIn</option>
+                    <select class="form-control fa-select" id="newScreenIcon" required [(ngModel)]="selectedIcon" (ngModelChange)="overrideSelected($event)" [ngModelOptions]="{standalone: true}" [style.color]="selectedIcon.styles[0].color">
+                        <option *ngFor="let icon of iconList" [style.color]="icon.styles[0].color" [innerHTML]="icon.code + ' ' +  icon.name" value="icon.name"></option>
                     </select>
                 </div>
             </div>
