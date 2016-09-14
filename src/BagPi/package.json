@@ -26,7 +26,8 @@
     "jquery": "^3.1.0",
     "font-awesome": "^4.6.3",
     "ng2-qrcode": "0.1.1",
-    "qrcodejs2": "0.0.2"
+    "qrcodejs2": "0.0.2",
+    "summernote": "^0.8.2"
   },
   "devDependencies": {
     "typescript": "^1.8.10",

@@ -13,36 +13,49 @@
 
 <div *ngIf="screenService.bCreating || (screenService.bEditing && screenService.bScreenSelected)" class="col-xs-12">
     <div class="container" *ngIf="bLoaded">
-        <form>
+        <form (ngSubmit)="newScreenFormSubmit()" #newScreenForm="ngForm">
             <div class="form-group row">
-                <label for="newScreenTypeSelect" class="col-xs-2 col-form-label">Screen Type</label>
-                <div class="col-xs-10">
-                    <select class="form-control" id="newScreenTypeSelect" required>
-                        <option>Social</option>
-                        <option style="background-color: #ca4242; color: white;">Custom HTML</option>
+                <label for="newScreenTypeSelect" class="col-xs-4 col-md-2 col-form-label">Screen Type</label>
+                <div class="col-xs-8 col-md-10">
+                    <select class="form-control" id="newScreenTypeSelect" required [(ngModel)]="dropSelectionTemplateType" [ngModelOptions]="{standalone: true}">
+                        <option [ngValue]="0">Social</option>
+                        <option [ngValue]="1" style="background-color: #ca4242; color: white;">Custom HTML</option>
                     </select>
                 </div>
             </div>
-            <div class="form-group row">
-                <label for="newScreenIcon" class="col-xs-2 col-form-label">Icon</label>
-                <div class="col-xs-10">
-                    <select class="form-control fa-select" id="newScreenIcon" required [(ngModel)]="dropSelectionCreate" (ngModelChange)="overrideSelectedIcon($event)" [ngModelOptions]="{standalone: true}" [style.color]="selectedIcon.styles[0].color">
-                        <option *ngFor="let icon of iconList" [style.color]="icon.styles[0].color" [innerHTML]="icon.code + ' ' +  icon.name" [ngValue]="icon.name"></option>
-                    </select>
+            <div *ngIf="dropSelectionTemplateType == 0">
+                <div class="form-group row">
+                    <label for="newScreenIcon" class="col-xs-4 col-md-2 col-form-label">Icon</label>
+                    <div class="col-xs-8 col-md-10">
+                        <select class="form-control fa-select" id="newScreenIcon" required [(ngModel)]="dropSelectionCreate" (ngModelChange)="overrideSelectedIcon($event)" [ngModelOptions]="{standalone: true}" [style.color]="selectedIcon.styles[0].color">
+                            <option *ngFor="let icon of iconList" [style.color]="icon.styles[0].color" [innerHTML]="icon.code + ' ' +  icon.name" [ngValue]="icon.name"></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row validation">
+                    <label for="newScreenTitleInput" class="col-xs-4 col-md-2 col-form-label">Screen Title</label>
+                    <div class="col-xs-8 col-md-10">
+                        <input type="text" class="form-control" id="newScreenTitleInput" required [(ngModel)]="newScreenTitle" [ngModelOptions]="{standalone: true}" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="newScreenTextColor" class="col-xs-4 col-md-2 col-form-label">Colour</label>
+                    <div class="col-xs-8 col-md-10">
+                        <input class="form-control" type="color" [(ngModel)]="selectedIcon.styles[0].color" [ngModelOptions]="{standalone: true}" id="newScreenTextColor" required>
+                    </div>
                 </div>
             </div>
-            <div class="form-group row">
-                <label for="newScreenTitleInput" class="col-xs-2 col-form-label">Screen Name</label>
-                <div class="col-xs-10">
-                    <input type="text" class="form-control" id="newScreenTitleInput" required />
+            <div *ngIf="dropSelectionTemplateType == 1">
+                <div class="form-group row">
+                    <label for="newScreenCustom" class="col-xs-12 col-md-12 col-form-label">
+                        Enter HTML/CSS/JavaScript
+                    </label>
+                    <div class="col-xs-12 col-md-12">
+                        <textarea class="form-control" required></textarea>
+                    </div>
                 </div>
             </div>
-            <div class="form-group row">
-                <label for="newScreenTextColor" class="col-xs-2 col-form-label">Color</label>
-                <div class="col-xs-10">
-                    <input class="form-control" type="color" [(ngModel)]="selectedIcon.styles[0].color" [ngModelOptions]="{standalone: true}" id="newScreenTextColor" required>
-                </div>
-            </div>
+            <button type="submit" class="btn btn-default" [disabled]="!newScreenForm.valid">Submit</button>
         </form>
     </div>
 </div>

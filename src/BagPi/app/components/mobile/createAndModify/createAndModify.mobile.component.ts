@@ -4,6 +4,8 @@ import { Observable }     from 'rxjs/Observable';
 
 import { BagPiScreenService } from '../../../services/index';
 
+declare var $: any;
+
 @Component({
     selector: 'bag-pi-create-and-modify-mobile-component',
     templateUrl: 'views/components/mobile/createAndModify/createAndModify.mobile.component.html',
@@ -14,13 +16,18 @@ export class BagPiCreateAndModifyMobileComponent {
 
     public selectedIcon = {};
     public selectedScreen = {};
+
     public dropSelectionEdit;
     public dropSelectionCreate;
+    public dropSelectionTemplateType;
 
     public bLoaded = false;
 
+    public newScreenTitle;
+
     constructor(private screenService: BagPiScreenService, private http: Http) {
-        this.getIcons().subscribe((data) => this.formatData(data));        
+        this.getIcons().subscribe((data) => this.formatData(data));      
+        this.dropSelectionTemplateType = 0;  
     }
 
     formatData(data) {
@@ -51,5 +58,9 @@ export class BagPiCreateAndModifyMobileComponent {
                 this.selectedScreen = this.screenService.screens[i];
             }
         }
+    }
+
+    addNewScreen() {
+        console.log("Add New Screen");
     }
 }

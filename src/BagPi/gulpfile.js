@@ -30,7 +30,8 @@ gulp.task("scriptsNStyles", () => {
             'font-awesome/css/*',
             'font-awesome/fonts/*',
             'ng2-qrcode/dist/ng2-qrcode.*js',
-            'qrcodejs2/qrcode.min.js'
+            'qrcodejs2/qrcode.min.js',
+            'summernote/dist/**'
     ], {
         cwd: "node_modules/**"
     })
