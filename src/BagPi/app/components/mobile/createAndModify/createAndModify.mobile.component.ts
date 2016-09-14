@@ -1,4 +1,6 @@
 ﻿import { Component } from '@angular/core';
+import { Http, Response } from '@angular/http';
+import { Observable }     from 'rxjs/Observable';
 
 import { BagPiScreenService } from '../../../services/index';
 
@@ -8,163 +10,45 @@ import { BagPiScreenService } from '../../../services/index';
     styleUrls: ['views/components/mobile/createAndModify/createAndModify.mobile.component.css']
 })
 export class BagPiCreateAndModifyMobileComponent {
-    public iconList = [
-        {
-            "name": "Facebook",
-            "code": "&#xf09a;",
-            "styles": [
-                {
-                    "color": "#3b5998"
-                }
-            ]
-        },
-        {
-            "name": "Twitter",
-            "code": "&#xf099;",
-            "styles": [
-                {
-                    "color": "#1DA1F2"
-                }
-            ]
-        },
-        {
-            "name": "Soundcloud",
-            "code": "&#xf1be;",
-            "styles": [
-                {
-                    "color": ""
-                }
-            ]
-        },
-        {
-            "name": "Google+",
-            "code": "&#xf2b3;",
-            "styles": [
-                {
-                    "color": ""
-                }
-            ]
-        },
-        {
-            "name": "YouTube",
-            "code": "&#xf167;",
-            "styles": [
-                {
-                    "color": ""
-                }
-            ]
-        },
-        {
-            "name": "Instagram",
-            "code": "&#xf16d;",
-            "styles": [
-                {
-                    "color": ""
-                }
-            ]
-        },
-        {
-            "name": "GitHub",
-            "code": "&#xf09b;",
-            "styles": [
-                {
-                    "color": ""
-                }
-            ]
-        },
-        {
-            "name": "Slack",
-            "code": "&#xf198;",
-            "styles": [
-                {
-                    "color": ""
-                }
-            ]
-        },
-        {
-            "name": "Reddit",
-            "code": "&#xf1a1;",
-            "styles": [
-                {
-                    "color": ""
-                }
-            ]
-        },
-        {
-            "name": "Wordpress",
-            "code": "&#xf19a;",
-            "styles": [
-                {
-                    "color": ""
-                }
-            ]
-        },
-        {
-            "name": "Bitbucket",
-            "code": "&#xf171;",
-            "styles": [
-                {
-                    "color": ""
-                }
-            ]
-        },
-        {
-            "name": "Pinterest",
-            "code": "&#xf0d2;",
-            "styles": [
-                {
-                    "color": ""
-                }
-            ]
-        },
-        {
-            "name": "Skype",
-            "code": "&#xf17e;",
-            "styles": [
-                {
-                    "color": ""
-                }
-            ]
-        },
-        {
-            "name": "Steam",
-            "code": "&#xf1b6;",
-            "styles": [
-                {
-                    "color": ""
-                }
-            ]
-        },
-        {
-            "name": "Deviantart",
-            "code": "&#xf1bd;",
-            "styles": [
-                {
-                    "color": ""
-                }
-            ]
-        },
-        {
-            "name": "LinkedIn",
-            "code": "&#xf0e1;",
-            "styles": [
-                {
-                    "color": ""
-                }
-            ]
-        }
-    ];
+    public iconList = [];
 
     public selectedIcon = {};
+    public selectedScreen = {};
+    public dropSelectionEdit;
+    public dropSelectionCreate;
 
-    constructor(private screenService: BagPiScreenService) {
-        this.selectedIcon = this.iconList[0];
+    public bLoaded = false;
+
+    constructor(private screenService: BagPiScreenService, private http: Http) {
+        this.getIcons().subscribe((data) => this.formatData(data));        
     }
 
-    overrideSelected(value) {
+    formatData(data) {
+        this.bLoaded = true;
+        console.log(data);
+        this.iconList = data;
+        this.selectedIcon = this.iconList[0];
+        this.dropSelectionCreate = this.selectedIcon["name"];
+        this.selectedScreen = this.screenService.screens[0];
+        this.dropSelectionEdit = this.selectedScreen["title"];
+    }
+
+    getIcons() {
+        return this.http.request('/data/icons.json').map(result => result.json());
+    }
+
+    overrideSelectedIcon(value) {
         for (var i = 0; i < this.iconList.length; i++) {
             if (this.iconList[i].name == value) {
                 this.selectedIcon = this.iconList[i];
+            }
+        }
+    }
+
+    overrideSelectedScreen(value) {
+        for (var i = 0; i < this.screenService.screens.length; i++) {
+            if (this.screenService.screens[i].title == value) {
+                this.selectedScreen = this.screenService.screens[i];
             }
         }
     }

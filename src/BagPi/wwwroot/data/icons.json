@@ -1,0 +1,146 @@
+﻿[
+  {
+    "name": "Facebook",
+    "code": "&#xf09a;",
+    "styles": [
+      {
+        "color": "#3b5998"
+      }
+    ]
+  },
+  {
+    "name": "Twitter",
+    "code": "&#xf099;",
+    "styles": [
+      {
+        "color": "#1DA1F2"
+      }
+    ]
+  },
+  {
+    "name": "Soundcloud",
+    "code": "&#xf1be;",
+    "styles": [
+      {
+        "color": "black"
+      }
+    ]
+  },
+  {
+    "name": "Google+",
+    "code": "&#xf2b3;",
+    "styles": [
+      {
+        "color": "black"
+      }
+    ]
+  },
+  {
+    "name": "YouTube",
+    "code": "&#xf167;",
+    "styles": [
+      {
+        "color": "black"
+      }
+    ]
+  },
+  {
+    "name": "Instagram",
+    "code": "&#xf16d;",
+    "styles": [
+      {
+        "color": "black"
+      }
+    ]
+  },
+  {
+    "name": "GitHub",
+    "code": "&#xf09b;",
+    "styles": [
+      {
+        "color": "black"
+      }
+    ]
+  },
+  {
+    "name": "Slack",
+    "code": "&#xf198;",
+    "styles": [
+      {
+        "color": "black"
+      }
+    ]
+  },
+  {
+    "name": "Reddit",
+    "code": "&#xf1a1;",
+    "styles": [
+      {
+        "color": "black"
+      }
+    ]
+  },
+  {
+    "name": "Wordpress",
+    "code": "&#xf19a;",
+    "styles": [
+      {
+        "color": "black"
+      }
+    ]
+  },
+  {
+    "name": "Bitbucket",
+    "code": "&#xf171;",
+    "styles": [
+      {
+        "color": "black"
+      }
+    ]
+  },
+  {
+    "name": "Pinterest",
+    "code": "&#xf0d2;",
+    "styles": [
+      {
+        "color": "black"
+      }
+    ]
+  },
+  {
+    "name": "Skype",
+    "code": "&#xf17e;",
+    "styles": [
+      {
+        "color": "black"
+      }
+    ]
+  },
+  {
+    "name": "Steam",
+    "code": "&#xf1b6;",
+    "styles": [
+      {
+        "color": "black"
+      }
+    ]
+  },
+  {
+    "name": "Deviantart",
+    "code": "&#xf1bd;",
+    "styles": [
+      {
+        "color": "black"
+      }
+    ]
+  },
+  {
+    "name": "LinkedIn",
+    "code": "&#xf0e1;",
+    "styles": [
+      {
+        "color": "black"
+      }
+    ]
+  }
+]

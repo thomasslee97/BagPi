@@ -1,8 +1,9 @@
 ﻿[
   {
-    "type":  "Social",
+    "type": "Social",
     "title": "Twitter",
     "icon": "<i class=\"fa fa-twitter\"></i>",
+    "iconCode": "&#xf099;",
     "username": "Tom Lee",
     "url": "https://twitter.com/thomasslee97",
     "handle": "@thomasslee97",
@@ -17,6 +18,7 @@
     "type": "Social",
     "title": "Facebook",
     "icon": "<i class=\"fa fa-facebook\"></i>",
+    "iconCode": "&#xf09a;",
     "username": "Tom Lee",
     "url": "https://www.facebook.com/thomasslee97",
     "handle": "/thomasslee97",
@@ -31,6 +33,7 @@
     "type": "Social",
     "title": "Blog",
     "icon": "<img src=\"/media/Logo_Dark.png\" width=\"36\" height=\"36\" />",
+    "iconCode":  "",
     "username": "./T",
     "url": "http://tom.grepped.co",
     "handle": "http://tom.grepped.co",

@@ -1,9 +1,18 @@
 ﻿<div *ngIf="screenService.bEditing" class="col-xs-12">
-    Edit
+    <form>
+        <div class="form-group row" *ngIf="screenService.bLoaded && bLoaded">
+            <label for="editScreenSelection" class="col-xs-4 col-form-label">Screen</label>
+            <div class="col-xs-8">
+                <select class="form-control fa-select" id="editScreenSelection" required [(ngModel)]="dropSelectionEdit" (ngModelChange)="overrideSelectedScreen($event)" [ngModelOptions]="{standalone: true}" [style.color]="selectedScreen.styles[0].color">
+                    <option *ngFor="let screen of screenService.screens" [style.color]="screen.styles[0].color" [innerHTML]="screen.iconCode + ' ' + screen.title" [ngValue]="screen.title"></option>
+                </select>
+            </div>
+        </div>
+    </form>
 </div>
 
-<div *ngIf="screenService.bCreating" class="col-xs-12">
-    <div class="container">
+<div *ngIf="screenService.bCreating || (screenService.bEditing && screenService.bScreenSelected)" class="col-xs-12">
+    <div class="container" *ngIf="bLoaded">
         <form>
             <div class="form-group row">
                 <label for="newScreenTypeSelect" class="col-xs-2 col-form-label">Screen Type</label>
@@ -17,8 +26,8 @@
             <div class="form-group row">
                 <label for="newScreenIcon" class="col-xs-2 col-form-label">Icon</label>
                 <div class="col-xs-10">
-                    <select class="form-control fa-select" id="newScreenIcon" required [(ngModel)]="selectedIcon" (ngModelChange)="overrideSelected($event)" [ngModelOptions]="{standalone: true}" [style.color]="selectedIcon.styles[0].color">
-                        <option *ngFor="let icon of iconList" [style.color]="icon.styles[0].color" [innerHTML]="icon.code + ' ' +  icon.name" value="icon.name"></option>
+                    <select class="form-control fa-select" id="newScreenIcon" required [(ngModel)]="dropSelectionCreate" (ngModelChange)="overrideSelectedIcon($event)" [ngModelOptions]="{standalone: true}" [style.color]="selectedIcon.styles[0].color">
+                        <option *ngFor="let icon of iconList" [style.color]="icon.styles[0].color" [innerHTML]="icon.code + ' ' +  icon.name" [ngValue]="icon.name"></option>
                     </select>
                 </div>
             </div>
@@ -31,7 +40,7 @@
             <div class="form-group row">
                 <label for="newScreenTextColor" class="col-xs-2 col-form-label">Color</label>
                 <div class="col-xs-10">
-                    <input class="form-control" type="color" value="#563d7c" id="newScreenTextColor" required>
+                    <input class="form-control" type="color" [(ngModel)]="selectedIcon.styles[0].color" [ngModelOptions]="{standalone: true}" id="newScreenTextColor" required>
                 </div>
             </div>
         </form>
