@@ -24,6 +24,9 @@ export class BagPiCreateAndModifyMobileComponent {
     public bLoaded = false;
 
     public newScreenTitle;
+    public newScreenUsername;
+    public newScreenUrl;
+    public newScreenHandle;
 
     constructor(private screenService: BagPiScreenService, private http: Http) {
         this.getIcons().subscribe((data) => this.formatData(data));      
@@ -61,6 +64,55 @@ export class BagPiCreateAndModifyMobileComponent {
     }
 
     addNewScreen() {
-        console.log("Add New Screen");
+        console.log("Adding New Screen");
+
+        var newScreen = {
+            "type": "Social",
+            "title": this.newScreenTitle,
+            "iconCode": this.selectedIcon["code"],
+            "username": this.newScreenUsername,
+            "url": this.newScreenUrl,
+            "handle": this.newScreenHandle,
+            "styles": this.selectedIcon["styles"]
+        }
+
+        this.screenService.screens.push(newScreen);
+
+        this.http.post("http://bagpi.localhost/updateScreens.php", JSON.stringify(this.screenService.screens)).subscribe((data) => console.log(data), (err) => console.log(err));
+    }
+
+    validateNewScreen() {
+        var bValidTitle: boolean = this.validateTitle(this.newScreenTitle);
+        var bValidUsername: boolean = this.validateUsername(this.newScreenUsername);
+        var bValidUrl: boolean = this.validateUrl(this.newScreenUrl);
+        var bValidHandle: boolean = this.validateHandle(this.newScreenHandle);
+
+        if (bValidTitle && bValidUsername && bValidUrl && bValidHandle) {
+            this.addNewScreen();
+        }
+    }
+
+    validateTitle(title: string) {
+        if (title == "" || title == null || title === null || title == undefined) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    validateUsername(username: string) {
+        return true;
+    }
+
+    validateUrl(url: string) {
+        if (url.startsWith("http://") || url.startsWith("https://")) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    validateHandle(handle: string) {
+        return true;
     }
 }

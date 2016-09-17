@@ -1,19 +1,21 @@
 ﻿[
   {
-    "name": "Facebook",
-    "code": "&#xf09a;",
-    "styles": [
-      {
-        "color": "#3b5998"
-      }
-    ]
-  },
-  {
     "name": "Twitter",
     "code": "&#xf099;",
     "styles": [
       {
-        "color": "#1DA1F2"
+        "color": "#1DA1F2",
+        "background": "#ffffff"
+      }
+    ]
+  },
+  {
+    "name": "Facebook",
+    "code": "&#xf09a;",
+    "styles": [
+      {
+        "color": "#3b5998",
+        "background": "#ffffff"
       }
     ]
   },
@@ -22,7 +24,8 @@
     "code": "&#xf1be;",
     "styles": [
       {
-        "color": "black"
+        "color": "black",
+        "background": "#ffffff"
       }
     ]
   },
@@ -31,7 +34,8 @@
     "code": "&#xf2b3;",
     "styles": [
       {
-        "color": "black"
+        "color": "black",
+        "background": "#ffffff"
       }
     ]
   },
@@ -40,7 +44,8 @@
     "code": "&#xf167;",
     "styles": [
       {
-        "color": "black"
+        "color": "black",
+        "background": "#ffffff"
       }
     ]
   },
@@ -49,7 +54,8 @@
     "code": "&#xf16d;",
     "styles": [
       {
-        "color": "black"
+        "color": "black",
+        "background": "#ffffff"
       }
     ]
   },
@@ -58,7 +64,8 @@
     "code": "&#xf09b;",
     "styles": [
       {
-        "color": "black"
+        "color": "black",
+        "background": "#ffffff"
       }
     ]
   },
@@ -67,7 +74,8 @@
     "code": "&#xf198;",
     "styles": [
       {
-        "color": "black"
+        "color": "black",
+        "background": "#ffffff"
       }
     ]
   },
@@ -76,7 +84,8 @@
     "code": "&#xf1a1;",
     "styles": [
       {
-        "color": "black"
+        "color": "black",
+        "background": "#ffffff"
       }
     ]
   },
@@ -85,7 +94,8 @@
     "code": "&#xf19a;",
     "styles": [
       {
-        "color": "black"
+        "color": "black",
+        "background": "#ffffff"
       }
     ]
   },
@@ -94,7 +104,8 @@
     "code": "&#xf171;",
     "styles": [
       {
-        "color": "black"
+        "color": "black",
+        "background": "#ffffff"
       }
     ]
   },
@@ -103,7 +114,8 @@
     "code": "&#xf0d2;",
     "styles": [
       {
-        "color": "black"
+        "color": "black",
+        "background": "#ffffff"
       }
     ]
   },
@@ -112,7 +124,8 @@
     "code": "&#xf17e;",
     "styles": [
       {
-        "color": "black"
+        "color": "black",
+        "background": "#ffffff"
       }
     ]
   },
@@ -121,7 +134,8 @@
     "code": "&#xf1b6;",
     "styles": [
       {
-        "color": "black"
+        "color": "black",
+        "background": "#ffffff"
       }
     ]
   },
@@ -130,7 +144,8 @@
     "code": "&#xf1bd;",
     "styles": [
       {
-        "color": "black"
+        "color": "black",
+        "background": "#ffffff"
       }
     ]
   },
@@ -139,7 +154,8 @@
     "code": "&#xf0e1;",
     "styles": [
       {
-        "color": "black"
+        "color": "black",
+        "background": "#ffffff"
       }
     ]
   }

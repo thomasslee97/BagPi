@@ -29,6 +29,10 @@ export class BagPiScreenService {
         return this.http.request('/data/screens.json').map(result => result.json());
     }
 
+    saveScreens() {
+        this.http.post('/data/screens.json', JSON.stringify(this.screens));
+    }
+
     public scrollToNext(currentScreen) {
         // CurrentScreen = 0 => Even displayed
         // CurrentScreen = 1 => Odd displayed
