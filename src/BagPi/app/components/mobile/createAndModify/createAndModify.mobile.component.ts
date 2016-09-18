@@ -78,7 +78,7 @@ export class BagPiCreateAndModifyMobileComponent {
 
         this.screenService.screens.push(newScreen);
 
-        this.http.post("http://bagpi.localhost/updateScreens.php", JSON.stringify(this.screenService.screens)).subscribe((data) => console.log(data), (err) => console.log(err));
+        this.screenService.saveScreens();
     }
 
     validateNewScreen() {

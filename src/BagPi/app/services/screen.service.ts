@@ -6,7 +6,7 @@ import { Observable }     from 'rxjs/Observable';
 @Injectable()
 export class BagPiScreenService {
     public currentScreenEven = 0;
-    public currentScreenOdd = 2;
+    public currentScreenOdd = 1;
 
     public bLoaded: boolean = false;
     public bEditing: boolean = false;
@@ -16,28 +16,33 @@ export class BagPiScreenService {
     public screens = [];
 
     public constructor(private http: Http) {
-        this.getScreens().subscribe((data) => this.screens = this.formatData(data));
+        this.loadScreens();
+        setInterval(() => this.loadScreens(), 60000);
     }
 
     formatData(data) {
         this.bLoaded = true;
         console.log(data);
-        return data;
+        return JSON.parse(data);
+    }
+
+    loadScreens() {
+        this.getScreens().subscribe((data) => this.screens = this.formatData(data));
     }
 
     getScreens() {
-        return this.http.request('/data/screens.json').map(result => result.json());
+        return this.http.request("http://bagpi.localhost/getScreens.php").map(result => result.json());
     }
 
     saveScreens() {
-        this.http.post('/data/screens.json', JSON.stringify(this.screens));
+        this.http.post("http://bagpi.localhost/updateScreens.php", JSON.stringify(this.screens)).subscribe((data) => console.log(data), (err) => console.log(err));
     }
 
     public scrollToNext(currentScreen) {
         // CurrentScreen = 0 => Even displayed
         // CurrentScreen = 1 => Odd displayed
 
-        if (currentScreen == 0) {
+        if (currentScreen == 1) {
             this.currentScreenOdd = this.currentScreenEven + 1;
             if (this.currentScreenOdd > this.screens.length - 1) {
                 this.currentScreenOdd = 0;
