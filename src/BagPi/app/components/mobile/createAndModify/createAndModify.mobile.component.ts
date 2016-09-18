@@ -1,5 +1,6 @@
-﻿import { Component } from '@angular/core';
+﻿import { Component, OnInit } from '@angular/core';
 import { Http, Response } from '@angular/http';
+import { Router } from '@angular/router';
 import { Observable }     from 'rxjs/Observable';
 
 import { BagPiScreenService } from '../../../services/index';
@@ -11,11 +12,13 @@ declare var $: any;
     templateUrl: 'views/components/mobile/createAndModify/createAndModify.mobile.component.html',
     styleUrls: ['views/components/mobile/createAndModify/createAndModify.mobile.component.css']
 })
-export class BagPiCreateAndModifyMobileComponent {
+export class BagPiCreateAndModifyMobileComponent implements OnInit {
     public iconList = [];
 
     public selectedIcon = {};
     public selectedScreen = {};
+
+    public selectedScreenIndex = 0;
 
     public dropSelectionEdit;
     public dropSelectionCreate;
@@ -29,14 +32,24 @@ export class BagPiCreateAndModifyMobileComponent {
     public newScreenHandle;
     public newScreenHtml;
 
-    constructor(private screenService: BagPiScreenService, private http: Http) {
-        this.getIcons().subscribe((data) => this.formatData(data));      
-        this.dropSelectionTemplateType = 0;  
+    constructor(private screenService: BagPiScreenService, private http: Http, private router: Router) {
+
+    }
+
+    ngOnInit() {
+        this.getIcons().subscribe((data) => this.formatData(data));
+        this.dropSelectionTemplateType = 0;
+
+        if (this.screenService.bEditing) {
+            this.selectedScreen = this.screenService.screens[0];
+            this.screenService.bScreenSelected = true;
+
+            this.setSelectedScreenValues();
+        }
     }
 
     formatData(data) {
         this.bLoaded = true;
-        console.log(data);
         this.iconList = data;
         this.selectedIcon = this.iconList[0];
         this.dropSelectionCreate = this.selectedIcon["name"];
@@ -52,6 +65,7 @@ export class BagPiCreateAndModifyMobileComponent {
         for (var i = 0; i < this.iconList.length; i++) {
             if (this.iconList[i].name == value) {
                 this.selectedIcon = this.iconList[i];
+                console.log(this.selectedIcon);
             }
         }
     }
@@ -60,42 +74,79 @@ export class BagPiCreateAndModifyMobileComponent {
         for (var i = 0; i < this.screenService.screens.length; i++) {
             if (this.screenService.screens[i].title == value) {
                 this.selectedScreen = this.screenService.screens[i];
+                this.selectedScreenIndex = i;
+                this.screenService.bScreenSelected = true;
+
+                this.setSelectedScreenValues();
+            }
+        }
+    }
+
+    setSelectedScreenValues() {
+        this.newScreenTitle = this.selectedScreen["title"];
+        this.newScreenUsername = this.selectedScreen["username"];
+        this.newScreenUrl = this.selectedScreen["url"];
+        this.newScreenHandle = this.selectedScreen["handle"];
+        this.newScreenHtml = this.selectedScreen["html"];
+        this.dropSelectionCreate = this.findIconNameByCode(this.selectedScreen["iconCode"]);
+
+        this.overrideSelectedIcon(this.dropSelectionCreate);
+    }
+
+    findIconNameByCode(code) {
+        for (var i = 0; i < this.iconList.length; i++) {
+            if (this.iconList[i]["code"] == code) {
+                return this.iconList[i]["name"];
             }
         }
     }
 
     addNewScreen(social: boolean) {
-        console.log("Adding New Screen");
-
         if (social) {
-            var newSocialScreen = {
-                "type": "Social",
-                "title": this.newScreenTitle,
-                "iconCode": this.selectedIcon["code"],
-                "username": this.newScreenUsername,
-                "url": this.newScreenUrl,
-                "handle": this.newScreenHandle,
-                "styles": this.selectedIcon["styles"]
-            }
+            if (this.screenService.bEditing) {
+                this.screenService.screens[this.selectedScreenIndex]["title"] = this.newScreenTitle;
+                this.screenService.screens[this.selectedScreenIndex]["iconCode"] = this.selectedIcon["code"];
+                this.screenService.screens[this.selectedScreenIndex]["username"] = this.newScreenUsername;
+                this.screenService.screens[this.selectedScreenIndex]["url"] = this.newScreenUrl;
+                this.screenService.screens[this.selectedScreenIndex]["handle"] = this.newScreenHandle;
+                this.screenService.screens[this.selectedScreenIndex]["styles"] = this.selectedIcon["styles"];
+            } else {
+                var newSocialScreen = {
+                    "type": "Social",
+                    "title": this.newScreenTitle,
+                    "iconCode": this.selectedIcon["code"],
+                    "username": this.newScreenUsername,
+                    "url": this.newScreenUrl,
+                    "handle": this.newScreenHandle,
+                    "styles": this.selectedIcon["styles"]
+                }
 
-            this.screenService.screens.push(newSocialScreen);
+                this.screenService.screens.push(newSocialScreen);
+            }
 
             this.screenService.saveScreens();
         } else {
-            var newCustomScreen = {
-                "type": "Custom",
-                "title": this.newScreenTitle,
-                "iconCode": undefined,
-                "username": undefined,
-                "url": undefined,
-                "handle": undefined,
-                "styles": undefined,
-                "html": this.newScreenHtml
+            if (this.screenService.bEditing) {
+                this.screenService.screens[this.selectedScreenIndex]["title"] = this.newScreenTitle;
+                this.screenService.screens[this.selectedScreenIndex]["html"] = this.newScreenHtml;
+            } else {
+                var newCustomScreen = {
+                    "type": "Custom",
+                    "title": this.newScreenTitle,
+                    "iconCode": undefined,
+                    "username": undefined,
+                    "url": undefined,
+                    "handle": undefined,
+                    "styles": undefined,
+                    "html": this.newScreenHtml
+                }
+
+                this.screenService.screens.push(newCustomScreen);
             }
 
-            this.screenService.screens.push(newCustomScreen);
-
             this.screenService.saveScreens();
+
+            this.router.navigate(['/success']);
         }
     }
 

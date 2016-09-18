@@ -24,7 +24,6 @@ export class BagPiScreenService {
 
     formatData(data) {
         this.bLoaded = true;
-        console.log(data);
         return JSON.parse(data);
     }
 
