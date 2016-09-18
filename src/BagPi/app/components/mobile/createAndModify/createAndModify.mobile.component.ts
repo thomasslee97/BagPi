@@ -27,6 +27,7 @@ export class BagPiCreateAndModifyMobileComponent {
     public newScreenUsername;
     public newScreenUrl;
     public newScreenHandle;
+    public newScreenHtml;
 
     constructor(private screenService: BagPiScreenService, private http: Http) {
         this.getIcons().subscribe((data) => this.formatData(data));      
@@ -63,32 +64,58 @@ export class BagPiCreateAndModifyMobileComponent {
         }
     }
 
-    addNewScreen() {
+    addNewScreen(social: boolean) {
         console.log("Adding New Screen");
 
-        var newScreen = {
-            "type": "Social",
-            "title": this.newScreenTitle,
-            "iconCode": this.selectedIcon["code"],
-            "username": this.newScreenUsername,
-            "url": this.newScreenUrl,
-            "handle": this.newScreenHandle,
-            "styles": this.selectedIcon["styles"]
+        if (social) {
+            var newSocialScreen = {
+                "type": "Social",
+                "title": this.newScreenTitle,
+                "iconCode": this.selectedIcon["code"],
+                "username": this.newScreenUsername,
+                "url": this.newScreenUrl,
+                "handle": this.newScreenHandle,
+                "styles": this.selectedIcon["styles"]
+            }
+
+            this.screenService.screens.push(newSocialScreen);
+
+            this.screenService.saveScreens();
+        } else {
+            var newCustomScreen = {
+                "type": "Custom",
+                "title": this.newScreenTitle,
+                "iconCode": undefined,
+                "username": undefined,
+                "url": undefined,
+                "handle": undefined,
+                "styles": undefined,
+                "html": this.newScreenHtml
+            }
+
+            this.screenService.screens.push(newCustomScreen);
+
+            this.screenService.saveScreens();
         }
-
-        this.screenService.screens.push(newScreen);
-
-        this.screenService.saveScreens();
     }
 
     validateNewScreen() {
-        var bValidTitle: boolean = this.validateTitle(this.newScreenTitle);
-        var bValidUsername: boolean = this.validateUsername(this.newScreenUsername);
-        var bValidUrl: boolean = this.validateUrl(this.newScreenUrl);
-        var bValidHandle: boolean = this.validateHandle(this.newScreenHandle);
+        if (this.dropSelectionTemplateType == 0) {
+            var bValidTitle: boolean = this.validateTitle(this.newScreenTitle);
+            var bValidUsername: boolean = this.validateUsername(this.newScreenUsername);
+            var bValidUrl: boolean = this.validateUrl(this.newScreenUrl);
+            var bValidHandle: boolean = this.validateHandle(this.newScreenHandle);
 
-        if (bValidTitle && bValidUsername && bValidUrl && bValidHandle) {
-            this.addNewScreen();
+            if (bValidTitle && bValidUsername && bValidUrl && bValidHandle) {
+                this.addNewScreen(true);
+            }
+        } else {
+            var bValidTitle: boolean = this.validateTitle(this.newScreenTitle);
+            var bValidHtml: boolean = this.validateHTML(this.newScreenHtml);
+
+            if (bValidTitle && bValidHtml) {
+                this.addNewScreen(false);
+            }
         }
     }
 
@@ -114,5 +141,13 @@ export class BagPiCreateAndModifyMobileComponent {
 
     validateHandle(handle: string) {
         return true;
+    }
+
+    validateHTML(html: string) {
+        if (html == "" || html == null || html === null || html == undefined) {
+            return false;
+        } else {
+            return true;
+        }
     }
 }

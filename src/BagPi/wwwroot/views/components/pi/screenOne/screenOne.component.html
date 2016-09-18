@@ -1,7 +1,11 @@
-﻿<div *ngIf="screenService.screens && screenService.bLoaded && screenService.screens.length > 0" class="container" [style.color]="screenService.screens[screenService.currentScreenEven].styles[0].color" [style.background]="screenService.screens[screenService.currentScreenEven].styles[0].background">
+﻿<div *ngIf="screenService.screens && screenService.bLoaded && screenService.screens.length > 0 && screenService.screens[screenService.currentScreenEven].type == 'Social'" class="container" [style.color]="screenService.screens[screenService.currentScreenEven].styles[0].color" [style.background]="screenService.screens[screenService.currentScreenEven].styles[0].background">
     <div class="row">
         <div class="col-xs-12 text-center">
-            <h1><span [innerHTML]="screenService.screens[screenService.currentScreenEven].icon"></span> {{screenService.screens[screenService.currentScreenEven].title}}</h1>
+            <h1>
+                <span *ngIf="screenService.screens[screenService.currentScreenEven].iconCode" class="fa" [innerHTML]="screenService.screens[screenService.currentScreenEven].iconCode"></span>
+                <span *ngIf="!screenService.screens[screenService.currentScreenEven].iconCode" class="fa" [innerHTML]="screenService.screens[screenService.currentScreenEven].icon"></span>
+                {{screenService.screens[screenService.currentScreenEven].title}}
+            </h1>
         </div>
     </div>
     <div class="row">
@@ -20,5 +24,10 @@
                 </div>
             </div>
         </div>
+    </div>
+</div>
+<div *ngIf="screenService.screens && screenService.bLoaded && screenService.screens.length > 0 && screenService.screens[screenService.currentScreenEven].type == 'Custom'" class="container">
+    <div [innerHTML]="screenService.screens[screenService.currentScreenEven].html">
+
     </div>
 </div>

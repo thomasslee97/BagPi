@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { Http, Response } from '@angular/http';
 import { Observable }     from 'rxjs/Observable';
 
+const url = "http://bagpi.localhost/";
+
 @Injectable()
 export class BagPiScreenService {
     public currentScreenEven = 0;
@@ -31,11 +33,11 @@ export class BagPiScreenService {
     }
 
     getScreens() {
-        return this.http.request("http://bagpi.localhost/getScreens.php").map(result => result.json());
+        return this.http.request(url + "getScreens.php").map(result => result.json());
     }
 
     saveScreens() {
-        this.http.post("http://bagpi.localhost/updateScreens.php", JSON.stringify(this.screens)).subscribe((data) => console.log(data), (err) => console.log(err));
+        this.http.post(url + "updateScreens.php", JSON.stringify(this.screens)).subscribe((data) => console.log(data), (err) => console.log(err));
     }
 
     public scrollToNext(currentScreen) {
