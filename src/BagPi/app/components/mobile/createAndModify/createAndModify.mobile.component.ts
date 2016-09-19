@@ -145,8 +145,6 @@ export class BagPiCreateAndModifyMobileComponent implements OnInit {
             }
 
             this.screenService.saveScreens();
-
-            this.router.navigate(['/success']);
         }
     }
 

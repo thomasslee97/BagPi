@@ -4,6 +4,7 @@ import { Http, Response } from '@angular/http';
 import { Observable }     from 'rxjs/Observable';
 
 const url = "http://bagpi.localhost/";
+//const url = "/data/";
 
 @Injectable()
 export class BagPiScreenService {
@@ -17,7 +18,7 @@ export class BagPiScreenService {
 
     public screens = [];
 
-    public constructor(private http: Http) {
+    public constructor(private http: Http, private router: Router) {
         this.loadScreens();
         setInterval(() => this.loadScreens(), 60000);
     }
@@ -36,7 +37,7 @@ export class BagPiScreenService {
     }
 
     saveScreens() {
-        this.http.post(url + "updateScreens.php", JSON.stringify(this.screens)).subscribe((data) => console.log(data), (err) => console.log(err));
+        this.http.post(url + "updateScreens.php", JSON.stringify(this.screens)).subscribe((data) => this.router.navigate(['/success']));
     }
 
     public scrollToNext(currentScreen) {
