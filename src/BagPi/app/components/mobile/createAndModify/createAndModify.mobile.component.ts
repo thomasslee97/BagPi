@@ -3,6 +3,8 @@ import { Http, Response } from '@angular/http';
 import { Router } from '@angular/router';
 import { Observable }     from 'rxjs/Observable';
 
+import { Screen } from '../../../interfaces/index';
+
 import { BagPiScreenService } from '../../../services/index';
 
 declare var $: any;
@@ -16,7 +18,7 @@ export class BagPiCreateAndModifyMobileComponent implements OnInit {
     public iconList = [];
 
     public selectedIcon = {};
-    public selectedScreen = {};
+    public selectedScreen: Screen;
 
     public selectedScreenIndex = 0;
 
@@ -26,6 +28,7 @@ export class BagPiCreateAndModifyMobileComponent implements OnInit {
 
     public bLoaded = false;
 
+    public newScreen: Screen;
     public newScreenTitle;
     public newScreenUsername;
     public newScreenUrl;
@@ -83,11 +86,18 @@ export class BagPiCreateAndModifyMobileComponent implements OnInit {
     }
 
     setSelectedScreenValues() {
-        this.newScreenTitle = this.selectedScreen["title"];
-        this.newScreenUsername = this.selectedScreen["username"];
-        this.newScreenUrl = this.selectedScreen["url"];
-        this.newScreenHandle = this.selectedScreen["handle"];
-        this.newScreenHtml = this.selectedScreen["html"];
+        /*this.newScreenTitle = this.selectedScreen.title;
+        this.newScreenUsername = this.selectedScreen.username;
+        this.newScreenUrl = this.selectedScreen.url;
+        this.newScreenHandle = this.selectedScreen.handle;
+        this.newScreenHtml = this.selectedScreen.html;*/
+
+        this.newScreen.title = this.selectedScreen.title;
+        this.newScreen.username = this.selectedScreen.username;
+        this.newScreen.url = this.selectedScreen.url;
+        this.newScreen.handle = this.selectedScreen.handle;
+        this.newScreen.html = this.selectedScreen.html;
+
         this.dropSelectionCreate = this.findIconNameByCode(this.selectedScreen["iconCode"]);
 
         this.overrideSelectedIcon(this.dropSelectionCreate);
