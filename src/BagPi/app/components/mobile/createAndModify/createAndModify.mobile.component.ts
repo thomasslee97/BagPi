@@ -121,7 +121,7 @@ export class BagPiCreateAndModifyMobileComponent implements OnInit {
                 this.screenService.screens[this.selectedScreenIndex]["handle"] = this.newScreenHandle;
                 this.screenService.screens[this.selectedScreenIndex]["styles"] = this.selectedIcon["styles"];
             } else {
-                var newSocialScreen = {
+                /*var newSocialScreen = {
                     "type": "Social",
                     "title": this.newScreenTitle,
                     "iconCode": this.selectedIcon["code"],
@@ -129,7 +129,17 @@ export class BagPiCreateAndModifyMobileComponent implements OnInit {
                     "url": this.newScreenUrl,
                     "handle": this.newScreenHandle,
                     "styles": this.selectedIcon["styles"]
-                }
+                }*/
+
+                var newSocialScreen: Screen;
+
+                newSocialScreen.type = "Social";
+                newSocialScreen.title = this.newScreenTitle;
+                newSocialScreen.iconCode = this.selectedIcon["code"];
+                newSocialScreen.username = this.newScreenUsername;
+                newSocialScreen.url = this.newScreenUrl;
+                newSocialScreen.handle = this.newScreenHandle;
+                newCustomScreen.styles = this.selectedIcon["styles"];
 
                 this.screenService.screens.push(newSocialScreen);
             }
