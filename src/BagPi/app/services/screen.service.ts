@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { Http, Response } from '@angular/http';
 import { Observable }     from 'rxjs/Observable';
 
+import { Screen } from '../interfaces/index';
+
 const url = "http://bagpi.localhost/";
 //const url = "/data/";
 
@@ -16,7 +18,7 @@ export class BagPiScreenService {
     public bCreating: boolean = false;
     public bScreenSelected: boolean = false;
 
-    public screens = [];
+    public screens: Screen[];
 
     public constructor(private http: Http, private router: Router) {
         this.loadScreens();
